@@ -1,13 +1,12 @@
 'use strict';
 let expectedNumber = Math.trunc(Math.random() * 20 + 1);
-// document.querySelector('div.number').textContent = expectedNumber;
 let score = 20;
 const listOfScores = [];
 document.querySelector('button.check').addEventListener('click', function () {
   let message = document.querySelector('p.message');
   const guessedNumber = Number(document.querySelector('.guess').value);
-  if (!guessedNumber) {
-    message.textContent = '⛔ Enter a number';
+  if (guessedNumber <= 0 || guessedNumber > 20) {
+    message.textContent = '⛔ Enter a valid number';
   } else if (guessedNumber === expectedNumber) {
     message.textContent = '🎉 Right choice';
     document.querySelector('body').style.backgroundColor = '#60b347';
@@ -23,8 +22,7 @@ document.querySelector('button.check').addEventListener('click', function () {
   }
   document.querySelector('span.score').textContent = score;
   if (score <= 0) {
-    alert('Gameover!');
-    location.reload();
+    alert('You lose the game, try it again 💁‍♂️');
   }
 
   let largestElement = 0;
