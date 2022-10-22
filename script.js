@@ -26,9 +26,13 @@ document.querySelector('button.check').addEventListener('click', function () {
     alert('Gameover!');
     location.reload();
   }
-  console.log(listOfScores);
+
+  let largestElement = 0;
+  for (let i = 0; i < listOfScores.length; i++) {
+    if (listOfScores[i] > largestElement) largestElement = listOfScores[i];
+  }
+  document.querySelector('span.highscore').textContent = largestElement;
 });
-// document.querySelector('span.highscore').textContent = Math.max(listOfScores);
 
 document.querySelector('.again').addEventListener('click', function () {
   score = 20;
